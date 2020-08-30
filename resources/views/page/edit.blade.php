@@ -4,6 +4,7 @@
 <div class="container">
   <div>
     <a href="{{ route('page.list') }}">list</a>
+    <a href="{{ route('page.new') }}">new</a>
   </div>
   <hr>
   @if ($page->id)
