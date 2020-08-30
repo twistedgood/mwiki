@@ -6,7 +6,12 @@
     <a href="{{ route('page.list') }}">list</a>
   </div>
   <hr>
-  <form method="POST" action="{{ route('page.post', [$page->id]) }}">
+  @if ($page->id)
+  <form method="POST" action="{{ route('page.put', [$page->id]) }}">
+    @method('PUT')
+  @else
+  <form method="POST" action="{{ route('page.post') }}">
+  @endif
     @csrf
     <div>
       <input type="text" name="title" value="{{ $page->title }}" size="100">
