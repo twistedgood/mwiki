@@ -1960,6 +1960,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -6419,10 +6422,10 @@ __webpack_require__.r(__webpack_exports__);
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css);", ""]);
 
 // module
-exports.push([module.i, "\n.rawtext {\n    width: 800px;\n    height: 200px;\n}\n", ""]);
+exports.push([module.i, "\ntextarea.rawtext {\n    height: 50vh;\n}\ndiv.preview {\n    margin-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -40885,7 +40888,7 @@ var render = function() {
                 expression: "rawtext"
               }
             ],
-            staticClass: "rawtext",
+            staticClass: "form-control rawtext",
             attrs: { name: "content" },
             domProps: { value: _vm.rawtext },
             on: {
@@ -40903,7 +40906,10 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { domProps: { innerHTML: _vm._s(_vm.preview) } })
+    _c("div", {
+      staticClass: "markdown-body previw",
+      domProps: { innerHTML: _vm._s(_vm.preview) }
+    })
   ])
 }
 var staticRenderFns = []

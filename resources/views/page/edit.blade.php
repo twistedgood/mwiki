@@ -2,11 +2,6 @@
 
 @section('content')
 <div class="container">
-  <div>
-    <a href="{{ route('page.list') }}">list</a>
-    <a href="{{ route('page.new') }}">new</a>
-  </div>
-  <hr>
   @if ($page->id)
   <form method="POST" action="{{ route('page.put', [$page->id]) }}">
     @method('PUT')
@@ -14,10 +9,8 @@
   <form method="POST" action="{{ route('page.post') }}">
   @endif
     @csrf
-    <div>
-      <input type="text" name="title" value="{{ $page->title }}" size="100">
-      <input type="submit" value="Save">
-    </div>
+    <input type="submit" class="btn btn-primary btn-sm" value="Save">
+    <input type="text" class="form-control" name="title" value="{{ $page->title }}" size="100" placeholder="Title">
     <markdown-view mdtext="{{ $page->content }}" :editable="true"></markdown-view>
   </form>
 <div>

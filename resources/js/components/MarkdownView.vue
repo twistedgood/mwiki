@@ -1,17 +1,20 @@
 <template>
     <div>
         <div v-if="editable">
-            <textarea name="content" class="rawtext" v-model="rawtext" @input="typing">
+            <textarea name="content" class="form-control rawtext" v-model="rawtext" @input="typing">
             </textarea>
         </div>
-        <div v-html="preview"></div>
+        <div class="markdown-body previw" v-html="preview"></div>
     </div>
 </template>
 
 <style>
-    .rawtext {
-        width: 800px;
-        height: 200px;
+    @import url('https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css');
+    textarea.rawtext {
+        height: 50vh;
+    }
+    div.preview {
+        margin-top: 10px;
     }
 </style>
 
