@@ -1963,6 +1963,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -6425,7 +6426,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css);", ""]);
 
 // module
-exports.push([module.i, "\ntextarea.rawtext {\n    height: 50vh;\n}\ndiv.preview {\n    margin-top: 10px;\n}\n", ""]);
+exports.push([module.i, "\n#rawtext {\n    height: 80vh;\n}\n#preview {\n    height: 80vh;\n    overflow-y: scroll;\n}\n", ""]);
 
 // exports
 
@@ -40876,9 +40877,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "row" }, [
     _vm.editable
-      ? _c("div", [
+      ? _c("div", { staticClass: "col" }, [
           _c("textarea", {
             directives: [
               {
@@ -40888,8 +40889,8 @@ var render = function() {
                 expression: "rawtext"
               }
             ],
-            staticClass: "form-control rawtext",
-            attrs: { name: "content" },
+            staticClass: "form-control",
+            attrs: { id: "rawtext", name: "content" },
             domProps: { value: _vm.rawtext },
             on: {
               input: [
@@ -40907,7 +40908,8 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", {
-      staticClass: "markdown-body previw",
+      staticClass: "markdown-body col",
+      attrs: { id: "preview" },
       domProps: { innerHTML: _vm._s(_vm.preview) }
     })
   ])
