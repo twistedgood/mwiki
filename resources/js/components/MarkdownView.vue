@@ -10,6 +10,8 @@
 
 <style>
     @import url('https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css');
+    @import url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/github.min.css');
+
     #rawtext {
         height: 80vh;
     }
@@ -21,6 +23,8 @@
 
 <script>
     import marked from "marked";
+    import hljs from 'highlightjs';
+
     export default {
         mounted() {
             console.log('Component mounted.')
@@ -33,6 +37,13 @@
             return {
                 rawtext: this.mdtext
             }
+        },
+        created() {
+            marked.setOptions({
+                highlight: function(code, lang) {
+                    return hljs.highlightAuto(code, [lang]).value;
+                }
+            });
         },
         methods: {
             typing: function(el) {

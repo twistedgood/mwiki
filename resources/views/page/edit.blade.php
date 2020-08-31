@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
   @if ($page->id)
   <form method="POST" action="{{ route('page.put', [$page->id]) }}">
     @method('PUT')
