@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div v-if="editable" class="col">
-            <textarea id="rawtext" name="content" class="form-control" v-model="rawtext" @input="typing">
+            <textarea id="mdtext" name="content" class="form-control" v-model="markdownText">
             </textarea>
         </div>
         <div id="preview" class="markdown-body col" v-html="preview"></div>
@@ -12,7 +12,7 @@
     @import url('https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css');
     @import url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/github.min.css');
 
-    #rawtext {
+    #mdtext {
         height: 80vh;
     }
     #preview {
@@ -22,20 +22,17 @@
 </style>
 
 <script>
-    import marked from "marked";
-    import hljs from 'highlightjs';
+    import marked from "marked"
+    import hljs from 'highlightjs'
 
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        },
         props: {
-            mdtext: String,
+            rawText: String,
             editable: Boolean
         },
         data() {
             return {
-                rawtext: this.mdtext
+                markdownText: this.rawText
             }
         },
         created() {
@@ -43,16 +40,11 @@
                 highlight: function(code, lang) {
                     return hljs.highlightAuto(code, [lang]).value;
                 }
-            });
-        },
-        methods: {
-            typing: function(el) {
-              this.rawtext = el.target.value;
-            },
+            })
         },
         computed: {
             preview: function() {
-                return marked(this.rawtext, { sanitize: true })
+                return marked(this.markdownText, { sanitize: true })
             }
         }
     }
