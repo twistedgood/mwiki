@@ -11,7 +11,7 @@
     @csrf
     <input type="submit" class="btn btn-primary btn-sm" value="Save">
     <input type="text" class="form-control" name="title" value="{{ $page->title }}" size="100" placeholder="Title">
-    <markdown-view mdtext="{{ $page->content }}" :editable="true"></markdown-view>
+    <markdown-view markdown-text="{{ $page->content }}" :editable="true"></markdown-view>
   </form>
 <div>
 @endsection
