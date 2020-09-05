@@ -35,10 +35,10 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('page.list') }}">List</a>
+                                <a class="nav-link" href="{{ route('pages.index') }}">List</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('page.new') }}">New Page</a>
+                                <a class="nav-link" href="{{ route('pages.create') }}">New Page</a>
                             </li>
                         @endauth
                     </ul>

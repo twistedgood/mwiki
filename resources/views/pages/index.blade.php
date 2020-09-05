@@ -6,7 +6,7 @@
   <ul>
   @foreach ($pages as $page)
     <li>
-      <a href="{{ route('page.show', [$page->id]) }}">{{ $page->title }}</a> - {{ mb_substr($page->content, 1, 100) }}
+      <a href="{{ route('pages.show', [$page->id]) }}">{{ $page->title }}</a> - {{ mb_substr($page->content, 0, 100) }}
     </li>
   @endforeach
   </ul>

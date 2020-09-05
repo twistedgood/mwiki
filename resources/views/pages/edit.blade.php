@@ -18,10 +18,10 @@
     </div>
   @endif
   @if ($page->id)
-  <form method="POST" action="{{ route('page.put', [$page->id]) }}">
+  <form method="POST" action="{{ route('pages.update', [$page->id]) }}">
     @method('PUT')
   @else
-  <form method="POST" action="{{ route('page.post') }}">
+  <form method="POST" action="{{ route('pages.store') }}">
   @endif
     @csrf
     <input type="submit" class="btn btn-primary btn-sm" value="Save">
