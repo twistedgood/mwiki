@@ -45,6 +45,10 @@ class PageController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $request->validate([
+            'title' => ['required'],
+            'content' =>  ['required'] 
+        ]);
         $page = \App\Page::create([
             'title' => $request->get('title'),
             'content' => $request->get('content')
@@ -85,6 +89,10 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page): RedirectResponse
     {
+        $request->validate([
+            'title' => ['required'],
+            'content' =>  ['required'] 
+        ]);
         $page = \App\Page::findOrFail($page->id);
         $page->update([
             'title' => $request->get('title'),
@@ -101,6 +109,8 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        $page = \App\Page::findOrFail($page->id);
+        $page->delete();
+        return redirect()->route('pages.index')->with('action_result', 'Successfully Removed!');
     }
 }
