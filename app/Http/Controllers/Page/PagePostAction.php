@@ -12,7 +12,10 @@ class PagePostAction extends Controller
     //
     public function __invoke(Request $request): Response
     {
-        $data = $request->all();
+        $request->validate([
+            'title' => ['required', 'max:1000'],
+            'content' => ['required']
+        ]);
 
         $page = \App\Page::find($request->route()->parameter('id'));
         if ($page == null) {

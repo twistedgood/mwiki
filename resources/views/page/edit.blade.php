@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-fluid">
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
   @if ($page->id)
   <form method="POST" action="{{ route('page.put', [$page->id]) }}">
     @method('PUT')
