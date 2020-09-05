@@ -3,6 +3,6 @@
 @section('content')
 <div class="container">
   <h2><a href="{{ route('page.edit', [$page->id]) }}">{{ $page->title }}</a></h2>
-  <markdown-view ra-text="{{ $page->content }}" :editable="false"></markdown-view>
+  <markdown-view raw-text="{{ $page->content }}" :editable="false"></markdown-view>
 <div>
 @endsection
