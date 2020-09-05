@@ -8,7 +8,7 @@
   <form method="POST" action="{{ route('pages.destroy', [$page->id]) }}">
     @method('DELETE')
     @csrf
-    <input type="submit" class="btn btn-primary btn-sm" value="Delete">
+    <input type="submit" class="btn btn-primary btn-sm" value="Delete" onclick="return confirm('Are you sure you want to delete?')">
   </form>
   </div>
   @endif
