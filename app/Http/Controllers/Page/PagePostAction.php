@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Page;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class PagePostAction extends Controller
 {
     //
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request): RedirectResponse
     {
         $request->validate([
             'title' => ['required', 'max:1000'],
@@ -29,6 +29,6 @@ class PagePostAction extends Controller
                 'content' => $request->get('content')
             ]);
         }
-        return response(view('page.show', ['page' => $page]));
+        return redirect()->route('page.edit', [$page->id])->with('action_result', 'Successfully Saved!');
     }
 }
