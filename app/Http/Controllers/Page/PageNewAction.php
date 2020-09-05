@@ -13,6 +13,7 @@ class PageNewAction extends Controller
     public function __invoke(Request $request): Response
     {
         $page = new \App\Page();
+        $page->title = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
 
         return response(view('page.edit', ['page' => $page]));
     }
