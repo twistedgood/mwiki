@@ -5,7 +5,7 @@
                 <textarea id="markdownText" name="content" class="form-control" v-model="markdownText">
                 </textarea>
             </div>
-            <div class="markdown-body mt-2 col-sm-6" v-html="preview"></div>
+            <div class="markdown-body mt-2 mb-5 col-sm-6" v-html="preview"></div>
         </div>
         <div v-if="!editable">
             <div>
@@ -15,7 +15,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="markdown-body mt-2" v-html="preview"></div>
+            <div class="markdown-body mt-2 mb-5" v-html="preview"></div>
         </div>
     </div>
 </template>

@@ -3,12 +3,23 @@
 @section('content')
 <div class="container">
   <h2>Pages</h2>
-  <ul>
-  @foreach ($pages as $page)
-    <li>
-      <a href="{{ route('pages.show', [$page->id]) }}">{{ $page->title }}</a> - {{ mb_substr($page->content, 0, 100) }}
-    </li>
-  @endforeach
-  </ul>
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Content</th>
+        <th scope="col">Last Updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($pages as $page)
+        <tr>
+          <td><a href="{{ route('pages.show', [$page->id]) }}">{{ $page->title }}</td>
+          <td>{{ mb_substr($page->content, 0, 100) }}</td>
+          <td>{{ $page->updated_at }}</td>
+        </tr>
+      @endforeach
+    </tbody>
+  </table>
 <div>
 @endsection
