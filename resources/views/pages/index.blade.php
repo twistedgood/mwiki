@@ -17,7 +17,7 @@
         <tr>
           <td><a href="{{ route('pages.edit', [$page->id]) }}">Edit</td>
           <td><a href="{{ route('pages.show', [$page->id]) }}">{{ $page->title }}</td>
-          <td>{{ mb_substr($page->content, 0, 100) }}</td>
+          <td>{{ mb_substr($page->content, 0, 80) }}</td>
           <td>{{ $page->updated_at }}</td>
         </tr>
       @endforeach
