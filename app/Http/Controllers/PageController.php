@@ -64,7 +64,7 @@ class PageController extends Controller
      */
     public function show(Page $page): Response
     {
-        $pages = \App\Page::all();
+        $pages = \App\Page::whereNotIn('id', [$page->id])->get();
         $page = \App\Page::findOrFail($page->id);
         return response(view('pages.show', ['page' => $page, 'pages' => $pages]));
     }

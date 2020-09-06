@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-sm-9">
       <h2><a href="{{ route('pages.edit', [$page->id]) }}">{{ $page->title }}</a></h2>
