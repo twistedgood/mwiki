@@ -8,6 +8,13 @@
             <div class="markdown-body mt-2 col-sm-6" v-html="preview"></div>
         </div>
         <div v-if="!editable">
+            <div>
+                <ul id="toc">
+                    <li v-for="item in toc" :key="item.anchor" :class="'ml-' + item.level * 2">
+                        <a :href="'#' + item.anchor">{{ item.escapedText }}</a>
+                    </li>
+                </ul>
+            </div>
             <div class="markdown-body mt-2" v-html="preview"></div>
         </div>
     </div>
@@ -33,7 +40,21 @@
         },
         data() {
             return {
-                markdownText: this.rawText
+                markdownText: this.rawText,
+                renderer: null,
+                toc: [],
+                anchor: [0, 0, 0]
+            }
+        },
+        methods: {
+            getAnchor: function(level) {
+                this.anchor[level - 1] += 1
+                for (var i = level; i < this.anchor.length; i++) {
+                    this.anchor[i] = 0
+                }
+                return (
+                    'index_' + this.anchor[0] + '-' + this.anchor[1] + '-' + this.anchor[2]
+                )
             }
         },
         created() {
@@ -42,10 +63,23 @@
                     return hljs.highlightAuto(code, [lang]).value;
                 }
             })
+
+            this.renderer = new marked.Renderer()
+            let vm = this
+            this.renderer.heading = function(text, level) {
+                let escapedText = text.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '')
+                if (level < 4) {
+                    let anchor = vm.getAnchor(level)
+                    vm.toc.push({ level, anchor, escapedText })
+                    return '<h' + level + ' id="' + anchor + '">' + text + '</h' + level + '>'
+                } else {
+                    return '<h' + level + '>' + text + '</h' + level + '>'
+                }
+            }
         },
         computed: {
             preview: function() {
-                return marked(this.markdownText, { sanitize: true })
+                return marked(this.markdownText, { sanitize: true, renderer: this.renderer })
             }
         }
     }
