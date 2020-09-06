@@ -64,8 +64,9 @@ class PageController extends Controller
      */
     public function show(Page $page): Response
     {
+        $pages = \App\Page::all();
         $page = \App\Page::findOrFail($page->id);
-        return response(view('pages.show', ['page' => $page]));
+        return response(view('pages.show', ['page' => $page, 'pages' => $pages]));
     }
 
     /**

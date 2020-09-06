@@ -1,10 +1,15 @@
 <template>
-    <div class="row">
-        <div v-if="editable" class="col">
-            <textarea id="mdtext" name="content" class="form-control" v-model="markdownText">
-            </textarea>
+    <div>
+        <div class="row" v-if="editable">
+            <div class="col-sm-6">
+                <textarea id="markdownText" name="content" class="form-control" v-model="markdownText">
+                </textarea>
+            </div>
+            <div class="markdown-body mt-2 col-sm-6" v-html="preview"></div>
         </div>
-        <div id="preview" class="markdown-body col" v-html="preview"></div>
+        <div v-if="!editable">
+            <div class="markdown-body mt-2" v-html="preview"></div>
+        </div>
     </div>
 </template>
 
@@ -12,12 +17,8 @@
     @import url('https://cdn.jsdelivr.net/npm/github-markdown-css@3.0.1/github-markdown.min.css');
     @import url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/styles/github.min.css');
 
-    #mdtext {
-        height: 80vh;
-    }
-    #preview {
-        height: 80vh;
-        overflow-y: scroll;
+    #markdownText {
+        height: 82vh;
     }
 </style>
 
