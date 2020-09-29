@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
   <h2>Pages</h2>
-  <table class="table table-sm table-striped">
+  <table class="table table-sm table table-striped">
     <thead>
       <tr>
         <th scope="col">Action</th>
